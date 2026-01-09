@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shri Jagdamba Infotech | Premium Tech Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- 🟣 OPTION 1: NEON CYBERPUNK THEME --- */
+        :root {
+            /* Main background palette - Dark blue/purple gradient */
+            --bg-1: #0a0118; /* Deepest violet */
+            --bg-2: #12032a; /* Slightly lighter violet */
+            --glass: rgba(18, 3, 42, 0.7); /* Transparent glass based on bg */
+            
+            /* Accent colors */
+            --primary: #00e1ff;     /* Neon Cyan */
+            --secondary: #ff00e1;   /* Neon Pink/Magenta */
+            --accent: #9d00ff;      /* Purple accent */
+            
+            /* Text & Borders */
+            --text: #ffffff;        /* Pure white */
+            --text-muted: #b3a6cf; /* Light purple-grey */
+            --border: rgba(255,255,255,0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Space Grotesk', sans-serif; 
+            background: linear-gradient(to bottom, var(--bg-1), var(--bg-2));
+            color: var(--text); 
+            overflow-x: hidden; 
+        }
+        html { scroll-behavior: smooth; }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(10, 1, 24, 0.9); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border); padding: 15px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        header.scrolled {
+            padding: 10px 5%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Gradient logo */
+        .logo { 
+            font-size: 24px; font-weight: 700; text-transform: uppercase; 
+            letter-spacing: 1.5px; background: linear-gradient(to right, #fff, var(--text-muted)); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+            display: flex; align-items: center; gap: 10px;
+        }
+        .logo span { 
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .logo-icon {
+            width: 40px; height: 40px; background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 20px rgba(0, 225, 255, 0.4);
+        }
+        .logo-icon i { font-size: 20px; }
+        
+        /* Navigation */
+        .nav-links {
+            display: flex; gap: 30px; align-items: center;
+        }
+        .nav-links a {
+            color: var(--text-muted); text-decoration: none; font-weight: 500;
+            font-size: 14px; letter-spacing: 0.5px; transition: 0.3s;
+            position: relative; padding: 5px 0;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text);
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0;
+            height: 2px; background: linear-gradient(to right, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        /* Dual-tone glow button */
+        .btn-glow {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white; padding: 12px 28px; border-radius: 50px;
+            font-weight: 700; text-decoration: none; transition: 0.3s;
+            box-shadow: 0 0 25px rgba(0, 225, 255, 0.4), 0 0 10px rgba(255, 0, 225, 0.3); 
+            border: none; cursor: pointer; letter-spacing: 0.5px; display: inline-flex;
+            align-items: center; justify-content: center; gap: 8px;
+        }
+        .btn-glow:hover { 
+            box-shadow: 0 0 40px rgba(0, 225, 255, 0.6), 0 0 20px rgba(255, 0, 225, 0.5); 
+            transform: translateY(-3px); 
+        }
+
+        /* --- 🛸 HERO SECTION --- */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            background: radial-gradient(circle at top right, #2a0845, transparent 40%),
+                        radial-gradient(circle at bottom left, #002845, transparent 40%),
+                        linear-gradient(to bottom, var(--bg-1), var(--bg-2));
+            padding: 100px 5% 50px; position: relative; overflow: hidden;
+        }
+        .hero-content { max-width: 600px; z-index: 2; position: relative; }
+        
+        /* Neon badge */
+        .badge { 
+            background: rgba(0, 225, 255, 0.1); color: var(--primary); 
+            padding: 8px 18px; border-radius: 20px; border: 1px solid var(--primary); 
+            font-size: 12px; font-weight: 700; display: inline-block; margin-bottom: 20px; 
+            box-shadow: 0 0 10px rgba(0, 225, 255, 0.3); letter-spacing: 1px;
+        }
+        
+        .hero h1 { font-size: 3.8rem; line-height: 1.1; margin-bottom: 20px; }
+        /* Gradient text effect on span */
+        .hero h1 span { 
+            background: linear-gradient(to right, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 225, 255, 0.4); 
+        }
+        .hero p { 
+            font-size: 1.2rem; color: var(--text-muted); margin-bottom: 30px; 
+            line-height: 1.6; max-width: 500px;
+        }
+        
+        /* Hero stats */
+        .hero-stats {
+            display: flex; gap: 30px; margin-top: 40px;
+        }
+        .stat-box {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.2rem; font-weight: 700; 
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .stat-label {
+            font-size: 13px; color: var(--text-muted); letter-spacing: 1px;
+        }
+        
+        .hero-img { 
+            position: absolute; right: 5%; width: 45%; top: 25%; z-index: 1; 
+            display: flex; justify-content: center;
+        }
+        /* Dual-tone glow effect under Laptop */
+        .hero-img::after {
+            content: ''; position: absolute; bottom: -20px; width: 70%; height: 20px;
+            background: radial-gradient(ellipse at center, rgba(0, 225, 255, 0.5), rgba(255, 0, 225, 0.3), transparent 70%);
+            filter: blur(25px); z-index: -1; animation: shadowPulse 4s ease-in-out infinite;
+        }
+        .hero-img img { 
+            width: 100%; border-radius: 20px; border: 1px solid rgba(0, 225, 255, 0.2);
+            animation: gentleFloat 4s ease-in-out infinite; 
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px) rotate(1deg); }
+            50% { transform: translateY(-15px) rotate(-1deg); }
+        }
+        @keyframes shadowPulse {
+             0%, 100% { opacity: 0.8; transform: scale(1); }
+             50% { opacity: 0.4; transform: scale(0.9); }
+        }
+
+        /* --- 🛡️ TRUST GRID --- */
+        .trust-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px;
+            padding: 0 5%; margin-top: -50px; position: relative; z-index: 10;
+        }
+        .trust-card {
+            background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--border);
+            padding: 30px 25px; border-radius: 15px; text-align: center; transition: 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative;
+            overflow: hidden;
+        }
+        .trust-card::before {
+            content: ''; position: absolute; top: 0; left: -100%;
+            width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transition: left 0.6s;
+        }
+        .trust-card:hover::before {
+            left: 100%;
+        }
+        .trust-card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--primary); 
+            background: rgba(0, 225, 255, 0.05); 
+            box-shadow: 0 15px 40px rgba(0, 225, 255, 0.2);
+        }
+        .trust-card i { 
+            font-size: 36px; color: var(--primary); margin-bottom: 15px; 
+            text-shadow: 0 0 15px rgba(0, 225, 255, 0.5);
+        }
+        .trust-card h4 { font-size: 18px; margin-bottom: 8px; font-weight: 700; }
+        .trust-card p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
+
+        /* --- 💻 STOCK SECTION --- */
+        .section { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
+        /* Gradient title underline */
+        .sec-title { 
+            font-size: 2.8rem; margin-bottom: 15px; text-align: center; 
+            position: relative; display: inline-block; left: 50%; transform: translateX(-50%);
+        }
+        .sec-title span { 
+            border-bottom: 4px solid; padding-bottom: 10px;
+            border-image: linear-gradient(to right, var(--primary), var(--secondary), var(--accent)) 1;
+        }
+        .sec-subtitle {
+            text-align: center; color: var(--text-muted); font-size: 1.1rem;
+            margin-bottom: 60px; max-width: 700px; margin-left: auto; margin-right: auto;
+        }
+        
+        .filters { 
+            display: flex; justify-content: center; gap: 15px; margin-bottom: 60px; 
+            flex-wrap: wrap; 
+        }
+        .filter-btn {
+            background: transparent; border: 1px solid var(--border); color: var(--text-muted);
+            padding: 12px 28px; border-radius: 50px; cursor: pointer; transition: 0.3s;
+            font-weight: 600; letter-spacing: 0.5px; position: relative; overflow: hidden;
+        }
+        .filter-btn::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%; background: linear-gradient(45deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s; z-index: -1;
+        }
+        .filter-btn:hover, .filter-btn.active { 
+            color: white; border-color: transparent; 
+            box-shadow: 0 0 20px rgba(0, 225, 255, 0.4); 
+        }
+        .filter-btn.active::before, .filter-btn:hover::before {
+            opacity: 1;
+        }
+
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        
+        .p-card {
+            background: var(--bg-2); border-radius: 20px; overflow: hidden; border: 1px solid var(--border);
+            position: relative; transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .p-card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--primary); 
+            box-shadow: 0 15px 50px rgba(0, 225, 255, 0.2), 0 0 20px rgba(255, 0, 225, 0.1);
+        }
+        
+        /* Image background to match theme */
+        .p-img { 
+            height: 240px; background: radial-gradient(circle, #2a0845, var(--bg-2)); 
+            display: flex; align-items: center; justify-content: center; padding: 20px; 
+            position: relative; overflow: hidden;
+        }
+        .p-img img { 
+            max-width: 90%; max-height: 100%; transition: 0.5s; 
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); border-radius: 10px;
+        }
+        .p-card:hover .p-img img { transform: scale(1.15) rotate(5deg); }
+        
+        .p-info { padding: 25px; }
+        .p-tag { 
+            color: var(--primary); font-size: 11px; font-weight: 700; 
+            letter-spacing: 1.5px; text-transform: uppercase; 
+            display: inline-block; padding: 5px 12px; background: rgba(0, 225, 255, 0.1);
+            border-radius: 20px; margin-bottom: 10px; border: 1px solid rgba(0, 225, 255, 0.3);
+        }
+        .p-name { font-size: 1.4rem; margin: 10px 0 15px; font-weight: 700; line-height: 1.3; }
+        
+        .specs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .spec-chip { 
+            font-size: 11px; background: rgba(255,255,255,0.05); padding: 8px 14px; 
+            border-radius: 8px; color: var(--text-muted); border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+        .p-card:hover .spec-chip {
+            background: rgba(0, 225, 255, 0.05); border-color: rgba(0, 225, 255, 0.2);
+        }
+        
+        .p-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 20px; }
+        .price { font-size: 1.6rem; font-weight: 700; color: white; }
+        .price span { 
+            font-size: 0.9rem; color: var(--text-muted); text-decoration: line-through; 
+            font-weight: 400; margin-left: 8px; display: inline-block;
+        }
+        .discount-badge {
+            position: absolute; top: 20px; right: 20px; background: var(--secondary);
+            color: white; font-weight: 700; font-size: 12px; padding: 5px 12px;
+            border-radius: 20px; z-index: 2; box-shadow: 0 5px 15px rgba(255, 0, 225, 0.3);
+        }
+        
+        .btn-buy { 
+            color: var(--primary); font-weight: 700; text-decoration: none; 
+            display: flex; align-items: center; gap: 8px; transition: 0.3s; 
+            padding: 10px 20px; background: rgba(0, 225, 255, 0.1); border-radius: 8px;
+            border: 1px solid rgba(0, 225, 255, 0.3);
+        }
+        .btn-buy:hover { 
+            color: var(--secondary); gap: 12px; background: rgba(0, 225, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 225, 255, 0.3);
+        }
+
+        /* --- 🆕 NEW FEATURES --- */
+        
+        /* Testimonials */
+        .testimonials {
+            background: var(--glass); border-radius: 25px; padding: 60px;
+            margin: 80px 5%; border: 1px solid var(--border);
+            position: relative; overflow: hidden;
+        }
+        .testimonials::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+        .testimonial-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+            margin-top: 40px;
+        }
+        .testimonial-card {
+            background: var(--bg-2); padding: 30px; border-radius: 15px;
+            border: 1px solid var(--border); position: relative;
+        }
+        .testimonial-card::before {
+            content: '"'; position: absolute; top: 10px; left: 20px;
+            font-size: 60px; color: var(--primary); opacity: 0.2;
+            font-family: serif; line-height: 1;
+        }
+        .rating {
+            color: #FFD700; margin-bottom: 15px; font-size: 16px;
+        }
+        .testimonial-text {
+            color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            display: flex; align-items: center; gap: 15px;
+        }
+        .author-avatar {
+            width: 50px; height: 50px; border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 18px;
+        }
+        .author-info h4 { font-size: 16px; margin-bottom: 5px; }
+        .author-info p { font-size: 13px; color: var(--text-muted); }
+        
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, rgba(0, 225, 255, 0.1), rgba(255, 0, 225, 0.1));
+            border-radius: 25px; padding: 60px; margin: 80px 5%;
+            text-align: center; border: 1px solid rgba(0, 225, 255, 0.3);
+            position: relative; overflow: hidden;
+        }
+        .newsletter::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 30% 20%, rgba(0, 225, 255, 0.05), transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(255, 0, 225, 0.05), transparent 50%);
+            z-index: -1;
+        }
+        .newsletter h2 { font-size: 2.5rem; margin-bottom: 15px; }
+        .newsletter p { color: var(--text-muted); max-width: 600px; margin: 0 auto 30px; }
+        .newsletter-form {
+            display: flex; max-width: 500px; margin: 0 auto; gap: 10px;
+        }
+        .newsletter-input {
+            flex: 1; padding: 15px 20px; border-radius: 50px; border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.05); color: white; font-family: 'Space Grotesk';
+            outline: none; transition: 0.3s;
+        }
+        .newsletter-input:focus {
+            border-color: var(--primary); background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Services */
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;
+            margin-top: 50px;
+        }
+        .service-card {
+            background: var(--glass); padding: 40px 30px; border-radius: 20px;
+            text-align: center; border: 1px solid var(--border); transition: 0.3s;
+            position: relative; overflow: hidden;
+        }
+        .service-card:hover {
+            transform: translateY(-10px); border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(0, 225, 255, 0.15);
+        }
+        .service-icon {
+            width: 70px; height: 70px; background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 25px; font-size: 28px;
+        }
+        .service-card h3 { margin-bottom: 15px; font-size: 1.3rem; }
+        .service-card p { color: var(--text-muted); line-height: 1.6; }
+        
+        /* 📍 LOCATION --- */
+        .map-section {
+            background: var(--glass); border-radius: 25px; padding: 50px; margin: 100px 5% 50px;
+            border: 1px solid var(--border); display: flex; gap: 50px; align-items: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4); position: relative; overflow: hidden;
+        }
+        .map-section::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+        .map-text h2 { font-size: 2.2rem; margin-bottom: 25px; }
+        .map-detail { margin-bottom: 25px; display: flex; gap: 20px; }
+        .icon-box { 
+            width: 50px; height: 50px; background: rgba(0, 225, 255, 0.1); 
+            color: var(--primary); border-radius: 12px; display: flex; 
+            align-items: center; justify-content: center; font-size: 20px; 
+            flex-shrink: 0; transition: 0.3s; border: 1px solid rgba(0, 225, 255, 0.3);
+        }
+        .map-detail:hover .icon-box {
+            transform: scale(1.1); background: rgba(0, 225, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 225, 255, 0.3);
+        }
+        .map-frame { flex: 1; height: 350px; border-radius: 15px; overflow: hidden; border: 1px solid var(--border); }
+        /* More intense map filter */
+        iframe { width: 100%; height: 100%; filter: invert(90%) hue-rotate(200deg) contrast(1.3) saturate(1.5); border: none; }
+
+        /* Floating WA */
+        .float-wa {
+            position: fixed; bottom: 25px; right: 25px; 
+            background: linear-gradient(45deg, #25D366, var(--primary));
+            color: white;
+            width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 32px; box-shadow: 0 0 25px rgba(37, 211, 102, 0.5); z-index: 100; transition: 0.3s;
+        }
+        .float-wa:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 0 35px rgba(37, 211, 102, 0.7); }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed; bottom: 100px; right: 25px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white; width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; box-shadow: 0 0 20px rgba(0, 225, 255, 0.5);
+            z-index: 99; opacity: 0; visibility: hidden; transition: 0.3s;
+            cursor: pointer;
+        }
+        .back-to-top.visible {
+            opacity: 1; visibility: visible;
+        }
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0, 225, 255, 0.7);
+        }
+
+        footer { 
+            text-align: center; padding: 60px 5% 40px; 
+            border-top: 1px solid var(--border); color: var(--text-muted); 
+            font-size: 14px; background: var(--bg-2); position: relative;
+            overflow: hidden;
+        }
+        .footer-content {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px; max-width: 1200px; margin: 0 auto 40px; text-align: left;
+        }
+        .footer-logo { font-size: 22px; font-weight: 700; margin-bottom: 15px; }
+        .footer-links h4 { color: white; margin-bottom: 20px; font-size: 16px; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+        .copyright {
+            padding-top: 30px; border-top: 1px solid var(--border);
+            font-size: 13px; opacity: 0.7;
+        }
+
+        /* Loading animation */
+        .loading-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-1); z-index: 9999; display: flex;
+            flex-direction: column; align-items: center; justify-content: center;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        .loading-screen.hidden {
+            opacity: 0; visibility: hidden;
+        }
+        .loader {
+            width: 70px; height: 70px; border-radius: 50%;
+            border: 5px solid transparent;
+            border-top: 5px solid var(--primary);
+            border-bottom: 5px solid var(--secondary);
+            animation: spin 1.5s linear infinite;
+            margin-bottom: 30px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media(max-width: 900px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 120px; }
+            .hero-img { position: relative; width: 100%; margin-top: 40px; }
+            .hero h1 { font-size: 2.8rem; }
+            .trust-grid { grid-template-columns: 1fr 1fr; }
+            .map-section { flex-direction: column; padding: 30px; }
+            .map-frame { width: 100%; height: 300px; }
+            .newsletter-form { flex-direction: column; }
+            .nav-links { display: none; }
+            .hero-stats { flex-wrap: wrap; justify-content: center; }
+            .footer-content { text-align: center; }
+        }
+        
+        @media(max-width: 600px) {
+            .trust-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.2rem; }
+            .sec-title { font-size: 2.2rem; }
+            .testimonials, .newsletter { padding: 40px 25px; }
+            .product-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+        <h3 style="color: var(--primary); margin-bottom: 10px;">Shri Jagdamba Infotech</h3>
+        <p style="color: var(--text-muted); font-size: 14px;">Loading premium tech experience...</p>
+    </div>
+
+    <header id="mainHeader">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-laptop-code"></i>
+            </div>
+            <div>Shri Jagdamba <span>Infotech</span></div>
+        </div>
+        
+        <div class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#stock">Products</a>
+            <a href="#services">Services</a>
+            <a href="#testimonials">Reviews</a>
+            <a href="#contact">Contact</a>
+            <a href="tel:8237012476" class="btn-glow"><i class="fas fa-phone-alt"></i> Call Now</a>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="badge">NAGPUR'S NO.1 TECH STORE</span>
+            <h1>Next-Gen Tech <br><span>Budget Price.</span></h1>
+            <p>Premium Refurbished Laptops with 20-Point Quality Check & 6 Month Warranty. Upgrade your workflow with enterprise-grade devices at unbeatable prices.</p>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px;">
+                <a href="#stock" class="btn-glow">View Laptops <i class="fas fa-arrow-right"></i></a>
+                <a href="https://wa.me/918237012476" style="padding: 12px 28px; border: 1px solid var(--text); color: var(--text); border-radius: 50px; text-decoration: none; font-weight: 700; transition:0.3s; display: inline-flex; align-items: center; gap: 8px;" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.1)'" onmouseout="this.style.backgroundColor='transparent'"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Satisfaction</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">6 M</div>
+                    <div class="stat-label">Warranty</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-img">
+            <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Premium Gaming Laptop">
+        </div>
+    </section>
+
+    <div class="trust-grid">
+        <div class="trust-card">
+            <i class="fas fa-microchip"></i>
+            <h4>Tested OK</h4>
+            <p>20-Point Hardware & Software Check</p>
+        </div>
+        <div class="trust-card">
+            <i class="fas fa-shield-alt"></i>
+            <h4>Warranty</h4>
+            <p>6 Months Service Assurance</p>
+        </div>
+        <div class="trust-card">
+            <i class="fas fa-bolt"></i>
+            <h4>Fast SSD</h4>
+            <p>NVMe SSD for Super Speed</p>
+        </div>
+        <div class="trust-card">
+            <i class="fas fa-tags"></i>
+            <h4>Best Price</h4>
+            <p>Lowest Price Guarantee</p>
+        </div>
+    </div>
+
+    <section class="section" id="stock">
+        <h2 class="sec-title"><span>Live Inventory</span></h2>
+        <p class="sec-subtitle">Premium refurbished laptops with enterprise-grade performance. All devices undergo rigorous testing and come with warranty.</p>
+        
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All Laptops</button>
+            <button class="filter-btn" data-filter="business">Business Series</button>
+            <button class="filter-btn" data-filter="gaming">Gaming</button>
+            <button class="filter-btn" data-filter="budget">Budget Friendly</button>
+        </div>
+
+        <div class="product-grid">
+            <div class="p-card" data-category="business">
+                <div class="discount-badge">62% OFF</div>
+                <div class="p-img">
+                    <img src="https://images.unsplash.com/photo-1593642702749-b7d2a804fbcf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Dell Latitude 7490">
+                </div>
+                <div class="p-info">
+                    <div class="p-tag">BUSINESS PRO</div>
+                    <h3 class="p-name">Dell Latitude 7490</h3>
+                    <div class="specs">
+                        <span class="spec-chip">i7 8th Gen</span>
+                        <span class="spec-chip">16GB RAM</span>
+                        <span class="spec-chip">512GB SSD</span>
+                        <span class="spec-chip">14" FHD</span>
+                    </div>
+                    <div class="p-footer">
+                        <div class="price">₹24,500 <span>₹65,000</span></div>
+                        <a href="https://wa.me/918237012476?text=Interested in Dell Latitude 7490" class="btn-buy">Buy Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-card" data-category="business">
+                <div class="discount-badge">60% OFF</div>
+                <div class="p-img">
+                    <img src="https://images.unsplash.com/photo-1544731612-de7f96afe55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="HP Elitebook 840 G5">
+                </div>
+                <div class="p-info">
+                    <div class="p-tag">BEST SELLER</div>
+                    <h3 class="p-name">HP Elitebook 840 G5</h3>
+                    <div class="specs">
+                        <span class="spec-chip">i5 8th Gen</span>
+                        <span class="spec-chip">8GB RAM</span>
+                        <span class="spec-chip">256GB SSD</span>
+                        <span class="spec-chip">Metal Body</span>
+                    </div>
+                    <div class="p-footer">
+                        <div class="price">₹19,999 <span>₹50,000</span></div>
+                        <a href="https://wa.me/918237012476?text=Interested in HP Elitebook 840 G5" class="btn-buy">Buy Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-card" data-category="business">
+                <div class="discount-badge">61% OFF</div>
+                <div class="p-img">
+                    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lenovo Thinkpad T480">
+                </div>
+                <div class="p-info">
+                    <div class="p-tag">RUGGED</div>
+                    <h3 class="p-name">Lenovo Thinkpad T480</h3>
+                    <div class="specs">
+                        <span class="spec-chip">i5 8th Gen</span>
+                        <span class="spec-chip">Double Battery</span>
+                        <span class="spec-chip">Type-C Port</span>
+                        <span class="spec-chip">Military Grade</span>
+                    </div>
+                    <div class="p-footer">
+                        <div class="price">₹17,500 <span>₹45,000</span></div>
+                        <a href="https://wa.me/918237012476?text=Interested in Lenovo Thinkpad T480" class="btn-buy">Buy Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-card" data-category="gaming">
+                <div class="discount-badge">55% OFF</div>
+                <div class="p-img">
+                    <img src="https://images.unsplash.com/photo-1606146485650-3a8480106a7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Dell G5 Gaming Laptop">
+                </div>
+                <div class="p-info">
+                    <div class="p-tag">GAMING</div>
+                    <h3 class="p-name">Dell G5 Gaming Laptop</h3>
+                    <div class="specs">
+                        <span class="spec-chip">i7 9th Gen</span>
+                        <span class="spec-chip">16GB RAM</span>
+                        <span class="spec-chip">512GB SSD + 1TB HDD</span>
+                        <span class="spec-chip">GTX 1660 Ti</span>
+                    </div>
+                    <div class="p-footer">
+                        <div class="price">₹42,500 <span>₹95,000</span></div>
+                        <a href="https://wa.me/918237012476?text=Interested in Dell G5 Gaming Laptop" class="btn-buy">Buy Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-card" data-category="budget">
+                <div class="discount-badge">65% OFF</div>
+                <div class="p-img">
+                    <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Dell Latitude 3490">
+                </div>
+                <div class="p-info">
+                    <div class="p-tag">BUDGET FRIENDLY</div>
+                    <h3 class="p-name">Dell Latitude 3490</h3>
+                    <div class="specs">
+                        <span class="spec-chip">i5 6th Gen</span>
+                        <span class="spec-chip">8GB RAM</span>
+                        <span class="spec-chip">256GB SSD</span>
+                        <span class="spec-chip">14" HD</span>
+                    </div>
+                    <div class="p-footer">
+                        <div class="price">₹14,999 <span>₹43,000</span></div>
+                        <a href="https://wa.me/918237012476?text=Interested in Dell Latitude 3490" class="btn-buy">Buy Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-card" data-category="business">
+                <div class="discount-badge">58% OFF</div>
+                <div class="p-img">
+                    <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="HP Probook 650 G2">
+                </div>
+                <div class="p-info">
+                    <div class="p-tag">BUSINESS CLASS</div>
+                    <h3 class="p-name">HP Probook 650 G2</h3>
+                    <div class="specs">
+                        <span class="spec-chip">i5 6th Gen</span>
+                        <span class="spec-chip">8GB RAM</span>
+                        <span class="spec-chip">500GB HDD</span>
+                        <span class="spec-chip">15.6" Display</span>
+                    </div>
+                    <div class="p-footer">
+                        <div class="price">₹16,500 <span>₹39,000</span></div>
+                        <a href="https://wa.me/918237012476?text=Interested in HP Probook 650 G2" class="btn-buy">Buy Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <h2 class="sec-title"><span>Our Services</span></h2>
+        <p class="sec-subtitle">Beyond selling premium laptops, we offer comprehensive tech solutions for all your needs.</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3>Laptop Repair</h3>
+                <p>Expert repair services for all laptop brands with genuine parts and quick turnaround time.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-desktop"></i>
+                </div>
+                <h3>Custom PC Build</h3>
+                <p>Custom-built gaming and workstation PCs tailored to your specific requirements and budget.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-hdd"></i>
+                </div>
+                <h3>Upgrade Services</h3>
+                <p>RAM, SSD, and battery upgrades to extend the life and performance of your existing laptop.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Data Recovery</h3>
+                <p>Professional data recovery services from damaged hard drives and storage devices.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <div class="testimonials" id="testimonials">
+        <h2 class="sec-title"><span>Customer Reviews</span></h2>
+        <p class="sec-subtitle">See what our customers say about their experience with Shri Jagdamba Infotech</p>
+        
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">Bought a Dell Latitude from them 6 months ago. The laptop looks and works like new. Their after-sales support is exceptional!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">RK</div>
+                    <div class="author-info">
+                        <h4>Rajesh Kumar</h4>
+                        <p>Business Owner</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">Got a gaming laptop at half the market price. Performance is flawless for both gaming and my video editing work. Highly recommended!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AM</div>
+                    <div class="author-info">
+                        <h4>Aniket Mehta</h4>
+                        <p>Graphic Designer</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="testimonial-text">Excellent service! They helped me choose the right laptop for my college needs within my budget. The warranty gives peace of mind.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">PS</div>
+                    <div class="author-info">
+                        <h4>Priya Sharma</h4>
+                        <p>Engineering Student</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="newsletter">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter to get early access to new stock arrivals, exclusive discounts, and tech tips.</p>
+        <form class="newsletter-form" id="newsletterForm">
+            <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+            <button type="submit" class="btn-glow">Subscribe</button>
+        </form>
+    </div>
+
+    <!-- Location & Contact -->
+    <div class="map-section" id="contact">
+        <div class="map-text">
+            <h2>Visit Our Experience Center</h2>
+            <div class="map-detail">
+                <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+                <div>
+                    <h4>Store Address</h4>
+                    <p style="color:var(--text-muted); font-size:15px;">CA Road, Sewasadan Square,<br>Jyoti Nagar, Nagpur 440018<br>Maharashtra, India</p>
+                </div>
+            </div>
+            <div class="map-detail">
+                <div class="icon-box"><i class="fas fa-phone"></i></div>
+                <div>
+                    <h4>Contact Numbers</h4>
+                    <p style="color:var(--text-muted); font-size:15px;">+91 82370 12476<br>+91 86248 92058</p>
+                </div>
+            </div>
+            <div class="map-detail">
+                <div class="icon-box"><i class="fas fa-clock"></i></div>
+                <div>
+                    <h4>Business Hours</h4>
+                    <p style="color:var(--text-muted); font-size:15px;">Mon-Sat: 10:00 AM - 8:00 PM<br>Sunday: 11:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            <a href="tel:8237012476" class="btn-glow" style="width:100%; display:block; text-align:center; margin-top: 20px;"><i class="fas fa-phone-alt"></i> Call for Inquiry</a>
+        </div>
+        <div class="map-frame">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.875698387604!2d79.08815531476566!3d21.15729798592882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c0a5a31faf13%3A0x19b327b32744563e!2sNagpur%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1645523456789!5m2!1sen!2sin" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <!-- Floating Buttons -->
+    <a href="https://wa.me/918237012476" class="float-wa"><i class="fab fa-whatsapp"></i></a>
+    <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">Shri Jagdamba <span style="color: var(--primary);">Infotech</span></div>
+                <p style="margin-bottom: 20px; line-height: 1.6;">Nagpur's premier destination for premium refurbished laptops and tech solutions. Quality guaranteed with 6-month warranty.</p>
+                <div style="display: flex; gap: 15px;">
+                    <a href="#" style="color: var(--text-muted); font-size: 18px;"><i class="fab fa-facebook"></i></a>
+                    <a href="#" style="color: var(--text-muted); font-size: 18px;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: var(--text-muted); font-size: 18px;"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#stock">Products</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="#">Business Laptops</a></li>
+                    <li><a href="#">Gaming Laptops</a></li>
+                    <li><a href="#">Budget Laptops</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Custom PC Build</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--primary);"></i> CA Road, Nagpur</li>
+                    <li><i class="fas fa-phone" style="margin-right: 8px; color: var(--primary);"></i> +91 82370 12476</li>
+                    <li><i class="fas fa-envelope" style="margin-right: 8px; color: var(--primary);"></i> info@jagdambainfotech.com</li>
+                    <li><i class="fas fa-clock" style="margin-right: 8px; color: var(--primary);"></i> Mon-Sat: 10AM-8PM</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2024 Shri Jagdamba Infotech. All Rights Reserved.</p>
+            <p style="margin-top:10px; opacity:0.5;">Developed by Krish | Premium Tech Store Template</p>
+        </div>
+    </footer>
+
+    <script>
+        // Loading screen
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+            }, 1000);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Back to top functionality
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.p-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filterValue = this.getAttribute('data-filter');
+                
+                // Show/hide products based on filter
+                productCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Newsletter form submission
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('.newsletter-input').value;
+            
+            // In a real application, you would send this to a server
+            alert(`Thank you for subscribing with email: ${email}\nYou'll receive our updates soon!`);
+            this.reset();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Product card hover enhancement
+        productCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.zIndex = '10';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.zIndex = '1';
+            });
+        });
+    </script>
+</body>
+</html>
